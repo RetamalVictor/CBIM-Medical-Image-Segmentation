@@ -303,6 +303,6 @@ def calculate_volume(images=None, true_ef=None):
 
     if true_ef != None:
         error = abs(true_ef - ejection_fraction)
-        return error, ejaction_fraction
+        return error, ejection_fraction
     else:
         return ejection_fraction
