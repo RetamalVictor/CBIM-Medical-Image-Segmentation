@@ -28,8 +28,8 @@ if __name__ == "__main__":
                           for aff in [False]:
 
                             datamodule = CAMUS_DATA(
-                                data_root="AImed/training/camus-dataset",
-                                data_root_test = "AImed/testing/camus-test-dataset",
+                                data_root="/home/vretamal/CBIM-Medical-Image-Segmentation/dataset/training/camus-dataset",
+                                data_root_test = "/home/vretamal/CBIM-Medical-Image-Segmentation/dataset/testing/camus-test-dataset",
                                 batch_size=batch_size,
                                 s1=affine[0],
                                 s2=affine[1],

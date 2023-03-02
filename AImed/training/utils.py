@@ -38,7 +38,7 @@ def get_original_size(preds, label, size):
     preds = torch.tensor(
             cv2.resize(
                 preds.squeeze().cpu().numpy(),
-                dsize=(size[1].numpy()[0], size[0].numpy()[0]),
+                dsize=(size[1].cpu().numpy()[0], size[0].cpu().numpy()[0]),
                 interpolation=cv2.INTER_NEAREST,
             )
         ).float().unsqueeze(0)
@@ -47,7 +47,7 @@ def get_original_size(preds, label, size):
     
         label = (torch.tensor(cv2.resize(
                 label.squeeze().cpu().numpy(),
-                dsize=(size[1].numpy()[0], size[0].numpy()[0]),
+                dsize=(size[1].cpu().numpy()[0], size[0].cpu().numpy()[0]),
                 interpolation=cv2.INTER_NEAREST)).int().unsqueeze(0))
 
         return preds, label
