@@ -1,7 +1,9 @@
-
+import os, time
 from AImed.segmentation import *
 from AImed.model.dim2.unet import *
 from AImed.model.dim2.utnetv2 import *
+from AImed.model.dim2.dual_attention_unet import *
+from AImed.model.dim2.attention_unet import *
 from AImed.training.data import CAMUSDataset
 from AImed.training.data import CAMUS_DATA
 
@@ -9,23 +11,27 @@ if __name__ == "__main__":
 
     # these remain constant
     filepath = "/training/"
-    filepath_checkpoint = "AImed/model-checkpoints/"
+    date_now = time.strftime("%Y-%m-%d-%H%M")
+    filepath_checkpoint = f"AImed/model-checkpoints/{date_now}"
+
+    if os.path.isdir(filepath_checkpoint) == False:
+            os.mkdir(filepath_checkpoint)
 
     print(torch.cuda.is_available())
     
-    for model_name in ["UTNetV2", "Unet"]:
-        for loss_function in ["CE", "Dice", "Focal", "CE+Dice", "CE+EDGE+Dice"]:
+    for model_name in ["UTNetV2"]:#, "Unet", "DAUNet","AttentionUNet"]:
+        for loss_function in [ "Dice", "Focal", "CE", "CE+Dice", "CE+EDGE+Dice"]:
             print(loss_function)
-            for batch_size in [1,4, 8, 16]:
-                for learning_rate in [0.005]:#, 0.0005, 0.00005, 0.000005]:
+            for batch_size in [8, 16]:
+                for learning_rate in [0.005, 0.0005, 0.00005]:#, 0.000005]:
                     for affine in [
-                        [0.6, 1.4, 40, 0.4]]:#,
-                        #[0.7, 1.3, 30, 0.3],
+                        [0.6, 1.4, 40, 0.4],
+                        [0.7, 1.3, 30, 0.3]]:#,
                         #[0.8, 1.2, 20, 0.2],
                         #[0.9, 1.2, 10, 0.1],
                     #]:
-                        for SNR in [False]:#, False]:
-                          for aff in [False]:
+                        for SNR in [True, False]:
+                          for aff in [True, False]:
 
                             datamodule = CAMUS_DATA(
                                 data_root="/home/vretamal/CBIM-Medical-Image-Segmentation/dataset/training/camus-dataset",

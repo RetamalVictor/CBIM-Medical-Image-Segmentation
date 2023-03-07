@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/gpfs/home3/vretamal/CBIM-Medical-Image-Segmentation/training_pipeline.py", line 5, in <module>
+    from AImed.model.dim2.dual_attention import *
+ModuleNotFoundError: No module named 'AImed.model.dim2.dual_attention'
+
+JOB STATISTICS
+==============
+Job ID: 2402641
+Cluster: snellius
+User/Group: vretamal/vretamal
+State: FAILED (exit code 1)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:05
+CPU Efficiency: 0.96% of 00:08:42 core-walltime
+Job Wall-clock time: 00:00:29
+Memory Utilized: 1.52 MB
+Memory Efficiency: 0.00% of 31.25 GB

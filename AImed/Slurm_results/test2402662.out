@@ -1,0 +1,85 @@
+True
+Dice
+Multiprocessing is handled by SLURM.
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name          | Type     | Params
+-------------------------------------------
+0 | model         | UTNetV2  | 28.1 M
+1 | selected_loss | DiceLoss | 0     
+-------------------------------------------
+28.1 M    Trainable params
+0         Non-trainable params
+28.1 M    Total params
+112.290   Total estimated model params size (MB)
+SLURM auto-requeueing enabled. Setting signal handlers.
+/gpfs/home3/vretamal/CBIM-Medical-Image-Segmentation/AImed/training/augmentation.py:187: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  aug = torch.tensor(img) + signal2
+/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:236: PossibleUserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 72 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:236: PossibleUserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 72 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+Training: 0it [00:00, ?it/s]Training:   0%|          | 0/7 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/7 [00:00<?, ?it/s] Traceback (most recent call last):
+  File "/gpfs/home3/vretamal/CBIM-Medical-Image-Segmentation/training_pipeline.py", line 103, in <module>
+    trainer.fit(
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 696, in fit
+    self._call_and_handle_interrupt(
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 650, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 735, in _fit_impl
+    results = self._run(model, ckpt_path=self.ckpt_path)
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1166, in _run
+    results = self._run_stage()
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1252, in _run_stage
+    return self._run_train()
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1283, in _run_train
+    self.fit_loop.run()
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 200, in run
+    self.advance(*args, **kwargs)
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 271, in advance
+    self._outputs = self.epoch_loop.run(self._data_fetcher)
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 200, in run
+    self.advance(*args, **kwargs)
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/loops/epoch/training_epoch_loop.py", line 174, in advance
+    batch = next(data_fetcher)
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/utilities/fetching.py", line 184, in __next__
+    return self.fetching_function()
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/utilities/fetching.py", line 263, in fetching_function
+    self._fetch_next_batch(self.dataloader_iter)
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/utilities/fetching.py", line 277, in _fetch_next_batch
+    batch = next(iterator)
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/trainer/supporters.py", line 557, in __next__
+    return self.request_next_batch(self.loader_iters)
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/trainer/supporters.py", line 569, in request_next_batch
+    return apply_to_collection(loader_iters, Iterator, next)
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/pytorch_lightning/utilities/apply_func.py", line 99, in apply_to_collection
+    return function(data, *args, **kwargs)
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 628, in __next__
+    data = self._next_data()
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 671, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 58, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/vretamal/.conda/envs/anne/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 58, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/gpfs/home3/vretamal/CBIM-Medical-Image-Segmentation/AImed/training/data.py", line 224, in __getitem__
+    return torch.clamp(tensor_img, min=0.0, max=1.0), tensor_lab, self.names[idx], self.sizes[idx], self.true_EF[idx]
+IndexError: list index out of range
+
+JOB STATISTICS
+==============
+Job ID: 2402662
+Cluster: snellius
+User/Group: vretamal/vretamal
+State: FAILED (exit code 1)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:08
+CPU Efficiency: 2.47% of 00:05:24 core-walltime
+Job Wall-clock time: 00:00:18
+Memory Utilized: 1.37 MB
+Memory Efficiency: 0.00% of 31.25 GB

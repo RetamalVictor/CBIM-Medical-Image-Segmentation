@@ -76,7 +76,8 @@ class DiceLoss(nn.Module):
 
         P = F.softmax(preds, dim=1)
         smooth = torch.zeros(C, dtype=torch.float32).fill_(0.00001)
-
+        
+        targets = targets.unsqueeze(1)
         class_mask = torch.zeros(preds.shape).to(preds.device)
         class_mask.scatter_(1, targets, 1.0)
 
