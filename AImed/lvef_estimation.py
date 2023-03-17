@@ -74,10 +74,14 @@ def get_widths(mask_2chamber, mask_4chamber, disk_size=25, mode="ED"):
         ventricle_segment = np.array((image == 1), dtype=np.uint8)
 
         # Normalise image
-        normed_img = (ventricle_segment - ventricle_segment.min()) / (
-            ventricle_segment.max() - ventricle_segment.min()
-        )
-        normed_img = (ventricle_segment * 255).astype(np.uint8)
+        if ventricle_segment.max() - ventricle_segment.min() != 0:
+            normed_img = (ventricle_segment - ventricle_segment.min()) / (
+                ventricle_segment.max() - ventricle_segment.min()
+            )
+        else:
+            normed_img = ventricle_segment
+        
+        normed_img = (normed_img * 255).astype(np.uint8)
         # Make a figure with 2 subplots showing image and normalised image
 
         # Find the edges in the image using canny detector

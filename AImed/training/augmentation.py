@@ -189,7 +189,8 @@ def create_augmentations(self):
                 + (signal * random_scale[2] * label2)
                 + (signal * random_scale[3] * label3)
             )
-            aug = torch.tensor(img) + signal2
+            # aug = torch.tensor(img) + signal2
+            aug = img + signal2
             img_aug = torch.clamp(aug, min=0.0, max=1.0)
             new_imgs.append(img_aug)
             new_names.append(self.names[image_idx])
