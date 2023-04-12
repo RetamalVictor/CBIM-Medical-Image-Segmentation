@@ -6,6 +6,7 @@ from AImed.model.dim2.dual_attention_unet import *
 from AImed.model.dim2.attention_unet import *
 from AImed.training.data import CAMUSDataset
 from AImed.training.data import CAMUS_DATA
+from pytorch_lightning.loggers import WandbLogger
 
 if __name__ == "__main__":
 
@@ -34,8 +35,8 @@ if __name__ == "__main__":
                           for aff in [True, False]:
 
                             datamodule = CAMUS_DATA(
-                                data_root="/home/vretamal/CBIM-Medical-Image-Segmentation/dataset/training/camus-dataset",
-                                data_root_test = "/home/vretamal/CBIM-Medical-Image-Segmentation/dataset/testing/camus-test-dataset",
+                                data_root="./dataset/training",
+                                data_root_test = "./dataset/testing",
                                 batch_size=batch_size,
                                 s1=affine[0],
                                 s2=affine[1],
@@ -82,13 +83,16 @@ if __name__ == "__main__":
                                 key = f.readline()
                             f.close()
 
-                            # plug in your own logger, we used neptune, but we removed our secret api token
+                            # # plug in your own logger, we used neptune, but we removed our secret api token
                             neptune_logger = NeptuneLogger(
                                 api_token=key,
-                                project="ace-ch/seg",
+                                project="vic-kyr/aimed",
                                 log_model_checkpoints=False
                             )
-
+                            
+                            # wandb_logger = WandbLogger(
+                            #     project="aimed",
+                            # )
                             trainer = Trainer(
                                 logger=neptune_logger,
                                 accelerator="auto",
