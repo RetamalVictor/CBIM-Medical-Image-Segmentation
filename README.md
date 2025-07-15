@@ -1,16 +1,57 @@
-# Automatic Segmentation of Cardiac Structures from 2-D Echocardiographic Images using Transformers
-Paper [here](https://ieeexplore.ieee.org/abstract/document/10563657)
+# Automatic Segmentation of Cardiac Structures from 2-D Echocardiographic Images Using Transformers
 
-To run the env creator in Snellius, clone this repository and ```cd ./CBIM-Medical-Image-Segmentation```. Run ```sbatch env_build.sh``` in the terminal and after approx 30 mins, the environment should be created. 
+This repository contains the implementation of our project for the [Camus Segmentation Challenge](https://www.creatis.insa-lyon.fr/Challenge/camus/index.html), leveraging transformer models to segment cardiac structures from 2-D echocardiographic images.
 
-## Camus Segmentation Challenge AI for Medical Imaging
-Group names: Anne Chel, Mats Gonggrijp, Victor Kyriacou, Vıctor Retamal Guiberteau, Laura Latorre Moreno
+### 📖 [Paper Link](https://ieeexplore.ieee.org/abstract/document/10563657)
 
-This forked repository contains the work of our group, build on top of the package CBIM-Medical-Image-Segmentation
-The Dataset preparation script is located at ```dataset_conversion/camus_2d.py```. 
-The Dataset Generator is located at ```training/dataset/2dim/dataset_camus.py```.
-The Training pipeline is located at ``` AImed/pipeline.ipynb``` The pipeline file contains the losses/metrics and the script for the experiments.
-The Modified Simpson is located at ```AImed/lvef_estimation.ipynb```
+## 🚀 Getting Started (Snellius Environment)
+
+To set up the environment on Snellius, follow these steps:
+
+1. Clone this repository:
+
+```bash
+git clone <repository-url>
+cd CBIM-Medical-Image-Segmentation
+```
+
+2. Build the environment by running the following command:
+
+```bash
+sbatch env_build.sh
+```
+
+The environment will be ready in approximately 30 minutes.
+
+## 📌 Project Structure
+
+* **Dataset Preparation:**
+
+  * Script to convert and prepare the dataset: `dataset_conversion/camus_2d.py`
+
+* **Dataset Generator:**
+
+  * Custom dataset generator script: `training/dataset/2dim/dataset_camus.py`
+
+* **Training Pipeline:**
+
+  * Main training pipeline, including loss functions, metrics, and experiment scripts: `AImed/pipeline.ipynb`
+
+* **Modified Simpson Method for LVEF Estimation:**
+
+  * Implementation for left ventricular ejection fraction (LVEF) estimation: `AImed/lvef_estimation.ipynb`
+
+## 👥 Team Members
+
+* Anne Chel
+* Mats Gonggrijp
+* Victor Kyriacou
+* Víctor Retamal Guiberteau
+* Laura Latorre Moreno
+
+## 🔗 Acknowledgments
+
+This work is based on a fork of the [CBIM-Medical-Image-Segmentation](original-repo-link) repository.
 
 ----------------------------------------------------------------------------------------------------
 ## CBIM-Medical-Image-Segmentation
