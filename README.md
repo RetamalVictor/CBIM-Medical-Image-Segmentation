@@ -1,4 +1,5 @@
-## Follow-up project
+# Automatic Segmentation of Cardiac Structures from 2-D Echocardiographic Images using Transformers
+
 To run the env creator in Snellius, clone this repository and ```cd ./CBIM-Medical-Image-Segmentation```. Run ```sbatch env_build.sh``` in the terminal and after approx 30 mins, the environment should be created. 
 
 ## Camus Segmentation Challenge AI for Medical Imaging
@@ -10,7 +11,7 @@ The Dataset Generator is located at ```training/dataset/2dim/dataset_camus.py```
 The Training pipeline is located at ``` AImed/pipeline.ipynb``` The pipeline file contains the losses/metrics and the script for the experiments.
 The Modified Simpson is located at ```AImed/lvef_estimation.ipynb```
 
-
+This paper was worked in a fork from:
 ----------------------------------------------------------------------------------------------------
 ## CBIM-Medical-Image-Segmentation
 
